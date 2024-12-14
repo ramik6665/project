@@ -1,0 +1,7 @@
+venv/
+.idea/
+__pycache__/
+myshop/media/
+*.sqlite3
+main.py
+*.json

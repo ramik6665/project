@@ -1,0 +1,15 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Вход в аккаунт</h1>
+    <!--GET-->
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-dark my-2">Войти</button>
+    </form>
+</div>
+{% endblock %}

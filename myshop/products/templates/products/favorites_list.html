@@ -1,0 +1,29 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Избранное{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Избранные товары</h1>
+    <div class="row">
+        {% for favorite in favorites %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ favorite.product.image1.url }}" class="card-img-top" alt="{{ favorite.product.name }}" style="height: 300px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ favorite.product.name }}</h5>
+                    <p class="text-muted">Категория: {{ favorite.product.category.name }}</p>
+                    <a href="{% url 'product_detail' favorite.product.pk %}" class="btn btn-primary">Подробнее</a>
+                    <form action="{% url 'remove_from_favorites' favorite.product.pk %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">Список избранного пуст.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

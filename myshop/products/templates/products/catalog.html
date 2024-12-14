@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+Товары категории {{ category.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Товары категории "{{ category.name }}"</h2>
+    <div class="d-flex flex-row flex-wrap justify-content-start">
+        {% for product in products %}
+        {% include 'components/_products-card.html' %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
